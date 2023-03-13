@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+
+<div>
+    <h1>add new players</h1>
+</div>
+<div>
+    <form th:action="@{/add}" th:object="${footballDto}" method="post">
+        <div>
+            <label for="name">Name</label>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></p>
+            <input type="text" id="name" th:field="*{name}">
+        </div>
+        <div>
+            <label for="birthday">Birthday</label>
+            <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: red"></p>
+            <input type="text" id="birthday" th:field="*{birthday}">
+        </div>
+         <div>
+            <label for="experience">Experience</label>
+            <p th:if="${#fields.hasErrors('experience')}" th:errors="*{birthday}" style="color: darkred"></p>
+            <input type="text" id="experience" th:field="*{experience}">
+        </div>
+         <div>
+            <label for="location">Location</label>
+            <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" style="color: darkred"></p>
+            <input type="text" id="location" th:field="*{location}">
+        </div>
+         <div>
+            <label for="team">Team: </label>
+             <select id="team" th:field="*{team}">
+                 <option th:each="teams:${teamList}"
+                         th:value="${teams.id}"
+                         th:text="${teams.name}">
+                 </option>
+             </select>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>

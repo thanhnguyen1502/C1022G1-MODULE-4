@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Ứng dụng mượn sách</h1>
+
+<th:block th:if="${message}">
+  <p style="color: green" th:text="${message}"></p>
+</th:block>
+
+<table border="1" cellpadding="10">
+  <tr>
+    <th>#</th>
+    <th>Tên tựa sách</th>
+    <th>Thể loại</th>
+    <th>Tác giả</th>
+    <th>Miêu tả</th>
+    <th>Số lượng</th>
+    <th>Thông tin</th>
+  </tr>
+
+  <tr th:each="item, status : ${bookList}">
+    <td th:text="${status.count}"></td>
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.category}"></td>
+    <td th:text="${item.author}"></td>
+    <td th:text="${item.description}"></td>
+    <td th:text="${item.amount}"></td>
+    <td><a th:href="@{/view/__${item.id}__}">Mượn sách</a></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

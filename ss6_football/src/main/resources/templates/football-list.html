@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div>
+    <h1>Player list</h1>
+</div>
+
+<div>
+    <form th:action="@{/football/home}">
+        <input type="text" name="timTacPham">
+        <button type="submit">Search</button>
+    </form>
+    <p th:text="${mess}"></p>
+</div>
+<div>
+    <table class="table table-hover" >
+        <tr class="bg-info link-light">
+            <th>#</th>
+            <th>Name</th>
+            <th>Birthday</th>
+            <th>Experience</th>
+            <th>Location</th>
+            <th>Team</th>
+            <th>
+                <a href="/create">+</a>
+            </th>
+        </tr>
+        <tr th:each="football, count:${footballList}">
+            <td th:text="${count.count}"></td>
+            <td th:text="${football.name}"></td>
+            <td th:text="${football.birthday}"></td>
+            <td th:text="${football.experience}"></td>
+            <td th:text="${football.location}"></td>
+            <td th:text="${football.team.name}"></td>
+            <td>
+                <a th:href="@{/delete(id=${football.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <div class="row mt-3">
+        <div class="col-lg-4 text-end">
+            <a th:if="${footballList != null and footballList.hasPrevious()}"
+               th:href="@{/home(page=${footballList.number -1}, name=${name})}"
+               class="btn btn-success fst-italic">previous</a>
+        </div>
+        <div class="col-lg-4 text-center">
+            <span th:text="${footballList.number + 1}"></span> /
+            <span th:text="${footballList.totalPages}"></span>
+        </div>
+        <div class="col-lg-4 text-start">
+            <a th:if="${footballList != null and footballList.hasNext()}"
+               th:href="@{/home(page=${footballList.number + 1}, name=${name})}"
+               class="btn btn-success fst-italic">next</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
