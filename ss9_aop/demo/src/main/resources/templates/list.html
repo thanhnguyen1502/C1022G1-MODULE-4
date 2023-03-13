@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p th:text="${mess}" ></p>
+
+<h3>Player List</h3>
+
+<p>Có <span th:text="${playerList.size()}"></span> cầu thủ</p>
+
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Position</th>
+        <th>Experience (year)</th>
+        <th>Team</th>
+        <th>Status</th>
+        <th>Edit</th>
+    </tr>
+
+    <tr th:each="player, status : ${playerList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${player.name}"></td>
+        <td th:text="${player.dayOfBirth}"></td>
+        <td th:text="${player.position}"></td>
+        <td th:text="${player.experience}"></td>
+        <td th:if="${player.team}" th:text="${player.team.teamName}"></td>
+        <td th:switch="${player.status}">
+            <span th:case="true">Đã đăng kí</span>
+            <span th:case="false">Dự bị</span>
+        </td>
+        <td><a th:href="@{/edit/__${player.id}__}">Edit</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

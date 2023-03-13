@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h3>Edit player</h3>
+
+<a th:href="@{/}">Back to player list</a>
+
+<form th:action="@{/update}" method="post" th:object="${playerDto}">
+  <table>
+
+    <tr>
+      <td><input type="hidden" th:field="*{id}"/></td>
+    </tr>
+
+
+    <tr>
+      <td>Name</td>
+      <td><input type="text" th:field="*{name}"></td>
+    </tr>
+
+    <tr>
+      <td>Birthday</td>
+      <td><input type="date" th:field="*{dayOfBirth}"></td>
+    </tr>
+
+    <tr>
+      <td>Position</td>
+      <td><input type="text" th:field="*{position}"></td>
+    </tr>
+
+    <tr>
+      <td>Experience</td>
+      <td><input type="text" th:field="*{experience}"></td>
+    </tr>
+
+    <tr>
+      <td>Team</td>
+      <td>
+        <select th:field="*{team}">
+          <option th:each="team : ${teamList}" th:value="${team.teamId}" th:text="${team.teamName}">
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Status</td>
+      <td><input type="text" th:field="*{status}"></td>
+    </tr>
+  </table>
+
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>
