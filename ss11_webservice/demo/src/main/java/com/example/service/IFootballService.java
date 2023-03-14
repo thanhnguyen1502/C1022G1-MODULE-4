@@ -1,14 +1,13 @@
 package com.example.service;
 
-import com.example.model.Football;
-import org.springframework.data.domain.Pageable;
+import com.example.model.Player;
 
 import java.util.List;
 
 public interface IFootballService {
-    List<Football> findAll();
+    List<Player> findAll();
 
-    void save(Football player);
+    void save(Player player);
 
-    Football findById(int id);
+    Player findById(int id);
 }

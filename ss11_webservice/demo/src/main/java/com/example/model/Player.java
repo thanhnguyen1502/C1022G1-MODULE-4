@@ -3,7 +3,7 @@ package com.example.model;
 import javax.persistence.*;
 
 @Entity
-public class Football {
+public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,7 +15,7 @@ public class Football {
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 
-    public Football() {
+    public Player() {
     }
 
     public int getId() {

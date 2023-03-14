@@ -13,7 +13,7 @@ public class Team {
     private String name;
     @OneToMany(mappedBy = "team")
     @JsonBackReference
-    private List<Football> footballList;
+    private List<Player> footballList;
 
     public Team() {
     }
@@ -34,11 +34,11 @@ public class Team {
         this.name = name;
     }
 
-    public List<Football> getFootballList() {
+    public List<Player> getFootballList() {
         return footballList;
     }
 
-    public void setFootballList(List<Football> footballList) {
+    public void setFootballList(List<Player> footballList) {
         this.footballList = footballList;
     }
 
