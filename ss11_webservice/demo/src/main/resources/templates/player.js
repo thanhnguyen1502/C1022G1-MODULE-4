@@ -12,8 +12,8 @@ function showList() {
                 element += `<tr>`
                 element += `<th scope="row">${i + 1}</th>`
                 element += `<td>${data[i].name}</td>`
-                element += `<td>${data[i].age}</td>`
-                element += `<td>${data[i].position}</td>`
+                element += `<td>${data[i].birthday}</td>`
+                element += `<td>${data[i].location}</td>`
                 element += `<td>${data[i].experience}</td>`
                 element += `<td>${data[i].status}</td>`
                 element += `</tr>`;
